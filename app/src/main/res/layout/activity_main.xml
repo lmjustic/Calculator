@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/outputTextbox"
         android:shadowColor="#000000"
-        android:text="0.0"
+        android:text="@string/defaultstring"
         android:inputType="numberDecimal"
         android:layout_below="@+id/inputView"
         android:layout_alignParentLeft="true"
@@ -25,7 +25,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
+        android:text="@string/plus"
         android:id="@+id/plusButton"
         android:layout_below="@+id/outputTextbox"
         android:onClick="onAdd" />
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-"
+        android:text="@string/minus"
         android:id="@+id/minusButton"
         android:layout_below="@+id/outputTextbox"
         android:layout_toRightOf="@+id/plusButton"
@@ -43,7 +43,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*"
+        android:text="@string/times"
         android:id="@+id/multiplyButton"
         android:layout_below="@+id/outputTextbox"
         android:layout_toRightOf="@+id/minusButton"
@@ -53,7 +53,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="/"
+        android:text="@string/divide"
         android:id="@+id/divideButton"
         android:layout_below="@+id/outputTextbox"
         android:layout_toRightOf="@+id/multiplyButton"
@@ -63,7 +63,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="="
+        android:text="@string/equals"
         android:id="@+id/equalsButton"
         android:layout_below="@+id/minusButton"
         android:layout_toLeftOf="@+id/divideButton"
@@ -74,7 +74,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="C"
+        android:text="@string/clear"
         android:id="@+id/clearButton"
         android:layout_below="@+id/minusButton"
         android:layout_alignParentLeft="true"
@@ -102,7 +102,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+/-"
+        android:text="@string/negate"
         android:id="@+id/negativeButton"
         android:layout_below="@+id/divideButton"
         android:layout_alignLeft="@+id/divideButton"

@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -43,12 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean checkVal() {
-        //System.out.println("abdc"+textbox.getText().toString()+"123");
-        if (textbox.getText().toString().equals("") || textbox.getText().toString().equals(".")) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(textbox.getText().toString().equals("") || textbox.getText().toString().equals("."));
     }
 
     private void updateInput() {
@@ -76,15 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 return "missingno";
         }
     }
-
-//    private void printArrs() {
-//        for (int i = 0; i < operations.size(); i++) {
-//            System.out.println("OP " + i + " " + operations.get(i));
-//        }
-//        for (int i = 0; i < values.size(); i++) {
-//            System.out.println("VALS " + i + " " + values.get(i));
-//        }
-//    }
 
     private double compute() {
         while(values.size() > 1) {
@@ -140,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
             values.add(getValue());
             operations.add(ADD);
         } else {
-            operations.set(operations.size() - 1, ADD);
+            if (operations.size() > 0) {
+                operations.set(operations.size() - 1, ADD);
+            }
         }
         clear();
         updateInput();
@@ -151,7 +138,9 @@ public class MainActivity extends AppCompatActivity {
             values.add(getValue());
             operations.add(SUB);
         } else {
-            operations.set(operations.size() - 1, SUB);
+            if (operations.size() > 0) {
+                operations.set(operations.size() - 1, SUB);
+            }
         }
         clear();
         updateInput();
@@ -162,7 +151,9 @@ public class MainActivity extends AppCompatActivity {
             values.add(getValue());
             operations.add(MUL);
         } else {
-            operations.set(operations.size() - 1, MUL);
+            if (operations.size() > 0) {
+                operations.set(operations.size() - 1, MUL);
+            }
         }
         clear();
         updateInput();
@@ -173,7 +164,9 @@ public class MainActivity extends AppCompatActivity {
             values.add(getValue());
             operations.add(DIV);
         } else {
-            operations.set(operations.size() - 1, DIV);
+            if (operations.size() > 0) {
+                operations.set(operations.size() - 1, DIV);
+            }
         }
         clear();
         updateInput();
