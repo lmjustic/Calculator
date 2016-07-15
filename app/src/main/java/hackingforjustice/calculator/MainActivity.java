@@ -4,48 +4,49 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private final int ADD = 1;
-    private final int SUB = 2;
-    private final int MUL = 3;
-    private final int DIV = 4;
+    public final int ADD = 1;
+    public final int SUB = 2;
+    public final int MUL = 3;
+    public final int DIV = 4;
 
-    private ArrayList<Double> values = new ArrayList<>();
-    private ArrayList<Integer> operations = new ArrayList<>();
+    public ArrayList<Double> values = new ArrayList<>();
+    public ArrayList<Integer> operations = new ArrayList<>();
 
-    private EditText textbox;
-    private TextView inputView;
-    private TextView error;
+    public EditText textbox;
+    public TextView inputView;
+    public TextView error;
 
     public void clear() {
         textbox.setText("");
         error.setText("");
     }
 
-    private void clearInput() {
+    public void clearInput() {
         inputView.setText("");
     }
 
-    private double getValue() {
+    public double getValue() {
         if (textbox.getText().toString().matches("")) {
             return 0.0;
         }
         return Double.parseDouble(textbox.getText().toString());
     }
 
-    private void setText(double value) {
+    public void setText(double value) {
         textbox.setText("" + value);
     }
 
-    private boolean checkVal() {
+    public boolean checkValue() {
         return !(textbox.getText().toString().equals("") || textbox.getText().toString().equals("."));
     }
 
-    private void updateInput() {
+    public void updateInput() {
         String input = "";
         for (int i = 0; i < operations.size(); i++) {
             input += values.get(i) + " " + getOp(operations.get(i)) + " ";
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         inputView.setText(input);
     }
 
-    private String getOp(int op) {
+    public String getOp(int op) {
         switch(op) {
             case ADD:
                 return "+";
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private double compute() {
+    public double compute() {
         while(values.size() > 1) {
             for (int i = 0; i < operations.size(); i++) {
                 if (operations.get(i) == MUL || operations.get(i) == DIV) {
@@ -115,65 +116,68 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageView valor = (ImageView) findViewById(R.id.valor);
+        assert valor != null;
+        valor.setImageResource(R.drawable.valor_logo);
         textbox = (EditText) findViewById(R.id.outputTextbox);
         inputView = (TextView) findViewById(R.id.inputView);
         error = (TextView) findViewById(R.id.errorBox);
     }
 
     public void onAdd(View view) {
-        if (checkVal()) {
+        if (checkValue()) {
             values.add(getValue());
             operations.add(ADD);
+            clear();
         } else {
             if (operations.size() > 0) {
                 operations.set(operations.size() - 1, ADD);
             }
         }
-        clear();
         updateInput();
     }
 
     public void onSub(View view) {
-        if (checkVal()) {
+        if (checkValue()) {
             values.add(getValue());
             operations.add(SUB);
+            clear();
         } else {
             if (operations.size() > 0) {
                 operations.set(operations.size() - 1, SUB);
             }
         }
-        clear();
         updateInput();
     }
 
     public void onMul(View view) {
-        if (checkVal()) {
+        if (checkValue()) {
             values.add(getValue());
             operations.add(MUL);
+            clear();
         } else {
             if (operations.size() > 0) {
                 operations.set(operations.size() - 1, MUL);
             }
         }
-        clear();
         updateInput();
     }
 
     public void onDiv(View view) {
-        if (checkVal()) {
+        if (checkValue()) {
             values.add(getValue());
             operations.add(DIV);
+            clear();
         } else {
             if (operations.size() > 0) {
                 operations.set(operations.size() - 1, DIV);
             }
         }
-        clear();
         updateInput();
     }
 
     public void onNeg(View view) {
-        if (checkVal()) {
+        if (checkValue()) {
             setText(getValue() * -1.0);
         }
     }
@@ -186,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onEql(View view) {
-        if (checkVal()) {
+        if (checkValue()) {
             values.add(getValue());
         } else {
             if (operations.size() > 0) {
